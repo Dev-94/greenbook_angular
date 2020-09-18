@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "greenbook"
+    }
+  },
+  "defaultProject": "greenbook",
+  "cli": {
+    "analytics": "69dbc331-bdcf-4c10-b285-4568400e75fa"
+  }
 }
