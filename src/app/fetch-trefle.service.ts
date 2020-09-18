@@ -10,9 +10,13 @@ export class FetchTrefleService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'https://jsonplaceholder.typicode.com/posts'
+  url = 'https://trefle.io/api/v1/plants?token='
+
+  proxyurl = "https://cors-anywhere.herokuapp.com/"
+
+  options = { headers: { "Access-Control-Allow-Origin": "*" } }
 
   fetchAllPlantData(): Observable<any> {
-    return this.http.get(this.url)
+    return this.http.get(this.proxyurl + this.url)
   }
 }

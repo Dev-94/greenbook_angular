@@ -1,4 +1,8 @@
 <h1>Greenbook</h1>
 
 <button (click)="getAllPlants()">getAllPlants</button>
-plants {{plants | json}}
+<!-- plants {{plants | json}} -->
+<!-- plants.data[0]  -->
+<ol *ngFor="let plant of plants.data">
+  <li>{{ plant | json }}</li>
+</ol>
