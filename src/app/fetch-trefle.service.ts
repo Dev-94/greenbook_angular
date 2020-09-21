@@ -10,7 +10,7 @@ export class FetchTrefleService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'https://trefle.io/api/v1/plants?token='
+  url = 'https://trefle.io/api/v1/plants?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA'
 
   proxyurl = "https://cors-anywhere.herokuapp.com/"
 
