@@ -1,12 +1,14 @@
 <h1>Greenbook</h1>
 
-<button (click)="getAllPlants()">getAllPlants</button>
-
-<div *ngIf="plants">
-  <ol *ngFor="let plant of plants.data">
-    <ul>{{ plant | json }}</ul>
-  </ol>
-</div>
-
 <app-auth-button></app-auth-button>
 <app-user-profile></app-user-profile>
+
+<button (click)="getAllPlants()">getAllPlants</button>
+
+plants should appear below:
+<div *ngIf="plants">
+  <ol *ngFor="let plant of plants.data">
+    <ul>{{ plant.common_name }}</ul>
+    <ul><img src="{{ plant.image_url }}"></ul>
+  </ol>
+</div>
