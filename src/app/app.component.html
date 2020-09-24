@@ -1,14 +1,19 @@
-<h1>Greenbook</h1>
-
-<app-auth-button></app-auth-button>
+<app-nav-bar></app-nav-bar>
 <app-user-profile></app-user-profile>
 
-<button (click)="getAllPlants()">getAllPlants</button>
+<input />
+<button>Submit</button>
+<br />
+<br />
 
-plants should appear below:
+<button (click)="getAllPlants()">View All Plants</button>
+<br />
+<br />
+Search results appear below:
 <div *ngIf="plants">
-  <ol *ngFor="let plant of plants.data">
+  {{plants | json}}
+  <!-- <ol *ngFor="let plant of plants.data">
     <ul>{{ plant.common_name }}</ul>
     <ul><img src="{{ plant.image_url }}"></ul>
-  </ol>
+  </ol> -->
 </div>

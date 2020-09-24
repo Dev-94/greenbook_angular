@@ -14,14 +14,10 @@ export class AppComponent {
 
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
-
   getAllPlants() {
     this.fetchTrefleService.fetchAllPlantData().subscribe(res => {
       console.log(res)
       this.plants = res
     })
-
   }
-
-
 }
