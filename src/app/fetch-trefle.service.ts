@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
-import { pluck, concatMap, mergeMap, map, filter, first, elementAt } from 'rxjs/operators'
+import { pluck, tap, concatMap, mergeMap, map, filter, first, elementAt } from 'rxjs/operators'
 import { of } from 'rxjs'
 
 interface GrowthData {
@@ -19,7 +19,8 @@ interface GrowthData {
 }
 
 
-// convert into several mini functions for each property that is being called, multiple requests cascading down
+// create new data type to store returns from both requests
+// create button that when clicked makes request for growth info, sending back id
 
 
 @Injectable({
@@ -40,6 +41,10 @@ export class FetchTrefleService {
   id
   common_name
   scientific_name
+  maximum_precipitation
+  minimum_precipitation
+  image_url
+
   growth: {
     minimum_precipitation: {
       mm
@@ -52,8 +57,10 @@ export class FetchTrefleService {
 
   fetchAllPlantData(): Observable<any> {
 
-    return this.getPlantGrowth()
+    // return this.getPlantGrowth()
     return this.getPlantImageIdName()
+
+
     // this function is invoked and invokes two functions that get info from two http requests
     // one isthe name and image and id
     // the other makes a request with the id as arg
@@ -73,30 +80,23 @@ export class FetchTrefleService {
     return this.http.get(this.proxyurl + this.url + this.page)
       .pipe(
         pluck("data"),
+        tap(x => console.log(x)),
+        map((item: any) => {
+          return [this.id, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
+        })
         // this.id = data.id
       )
   }
 
   getPlantGrowth(): Observable<any> {
-    // data.main_species.growth
     return this.http.get(this.proxyurl + this.growthUrl + this.page)
       .pipe(
         pluck("data"),
         pluck("main_species"),
-        mergeMap((item: any): Observable<any> => {
-          this.id = of(item["id"]),
-            this.common_name = of(item["scientific_name"]),
-            this.scientific_name = of(item["scientific_name"]),
-            this.scientific_name = of(item["scientific_name"]),
-            this.growth.minimum_precipitation.mm = of(item["growth"]["minimum_precipitation"]["mm"]),
-            this.growth.maximum_precipitation.mm = of(item["growth"]["maximum_precipitation"]["mm"])
+        map((item: any) => {
+          return [this.id, this.common_name, this.scientific_name, this.maximum_precipitation, this.minimum_precipitation] = [item.id, item.common_name, item.scientific_name, item.growth.maximum_precipitation.mm, item.growth.minimum_precipitation.mm]
         })
-        // pluck("id"),
-
-        // fix map, add interface type
-        // couple with other fn
       )
-
   }
 
 
