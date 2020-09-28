@@ -11,13 +11,21 @@ import { FetchTrefleService } from './fetch-trefle.service'
 export class AppComponent {
 
   plants: any
+  plantGrowth: any
 
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
-  getAllPlants() {
-    this.fetchTrefleService.fetchAllPlantData().subscribe(res => {
-      console.log(res)
+  fetchPlantInfo() {
+    this.fetchTrefleService.getPlantImageIdName().subscribe(res => {
+      console.log('getPlantImageIdName()', res)
       this.plants = res
     })
   }
+  fetchPlantGrowth() {
+    this.fetchTrefleService.getPlantGrowth().subscribe(res => {
+      console.log('getPlantGrowth()', res)
+      this.plantGrowth = res
+    })
+  }
+
 }

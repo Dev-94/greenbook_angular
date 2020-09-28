@@ -20,7 +20,8 @@ interface GrowthData {
 
 
 // create new data type to store returns from both requests
-// create button that when clicked makes request for growth info, sending back id
+// create button that when clicked makes request for growth info, sending back id -- COMPLETE
+// pass id from plantInfo to plantGrowth
 
 
 @Injectable({
@@ -68,22 +69,22 @@ export class FetchTrefleService {
 
     // go into data from plant and pluck common_name and image_url
     // return this.http.get(this.proxyurl + this.url + this.page)
-    // .pipe(
-    // elementAt(0)
+    //   .pipe(
+    //     elementAt(0)
     // filter(item => item["data"])
     // pluck('common_name', 'image_url')
-    // )
+    //   )
   }
 
   getPlantImageIdName(): Observable<any> {
     // data.common_name, data.image_url, data.main_species_id
     return this.http.get(this.proxyurl + this.url + this.page)
       .pipe(
-        pluck("data"),
-        tap(x => console.log(x)),
-        map((item: any) => {
-          return [this.id, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
-        })
+        // pluck("data"),
+        // tap(x => console.log(x)),
+        // map((item: any) => {
+        //   return [this.id, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
+        // })
         // this.id = data.id
       )
   }

@@ -6,14 +6,16 @@
 <br />
 <br />
 
-<button (click)="getAllPlants()">View All Plants</button>
+<button (click)="fetchPlantInfo()">View All Plants</button>
 <br />
 <br />
 Search results appear below:
 <div *ngIf="plants">
-  {{plants | json}}
-  <!-- <ol *ngFor="let plant of plants.data">
+  <!-- {{plants | json}} -->
+  <ol *ngFor="let plant of plants.data">
     <ul>{{ plant.common_name }}</ul>
     <ul><img src="{{ plant.image_url }}"></ul>
-  </ol> -->
+    <button (click)="fetchPlantGrowth()">click for growth info</button>
+    <div *ngIf="plantGrowth">{{plantGrowth}}</div>
+  </ol>
 </div>
