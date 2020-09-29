@@ -21,7 +21,9 @@ interface GrowthData {
 
 // create new data type to store returns from both requests
 // create button that when clicked makes request for growth info, sending back id -- COMPLETE
-// pass id from plantInfo to plantGrowth
+// pass id from plantInfo to plantGrowth -- COMPLETE
+// turn response from array to objects
+// show multiple getPlantImageIdName responses
 
 
 @Injectable({
@@ -30,14 +32,14 @@ interface GrowthData {
 export class FetchTrefleService {
 
   constructor(private http: HttpClient) { }
-  plantId = 273225
 
-  url = 'https://trefle.io/api/v1/plants?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA'
-  growthUrl = `https://trefle.io/api/v1/plants/${this.plantId}?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA`
+  plantId: number
 
-  proxyurl = 'https://cors-anywhere.herokuapp.com/'
+  url: any = 'https://trefle.io/api/v1/plants?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA'
 
-  page = '&page=1'
+  proxyurl: any = 'https://cors-anywhere.herokuapp.com/'
+
+  page: any = '&page=1'
 
   id
   common_name
@@ -56,41 +58,40 @@ export class FetchTrefleService {
   }
 
 
-  fetchAllPlantData(): Observable<any> {
+  // fetchAllPlantData(): Observable<any> {
 
-    // return this.getPlantGrowth()
-    return this.getPlantImageIdName()
+  // return this.getPlantGrowth()
+  // return this.getPlantImageIdName()
 
 
-    // this function is invoked and invokes two functions that get info from two http requests
-    // one isthe name and image and id
-    // the other makes a request with the id as arg
-    // then sends info at the same time to component
+  // this function is invoked and invokes two functions that get info from two http requests
+  // one isthe name and image and id
+  // the other makes a request with the id as arg
+  // then sends info at the same time to component
 
-    // go into data from plant and pluck common_name and image_url
-    // return this.http.get(this.proxyurl + this.url + this.page)
-    //   .pipe(
-    //     elementAt(0)
-    // filter(item => item["data"])
-    // pluck('common_name', 'image_url')
-    //   )
-  }
+  // go into data from plant and pluck common_name and image_url
+  // return this.http.get(this.proxyurl + this.url + this.page)
+  //   .pipe(
+  //     elementAt(0)
+  // filter(item => item["data"])
+  // pluck('common_name', 'image_url')
+  //   )
+  // }
 
   getPlantImageIdName(): Observable<any> {
     // data.common_name, data.image_url, data.main_species_id
     return this.http.get(this.proxyurl + this.url + this.page)
       .pipe(
-        // pluck("data"),
-        // tap(x => console.log(x)),
-        // map((item: any) => {
-        //   return [this.id, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
-        // })
-        // this.id = data.id
+        pluck("data"),
+        map((item: any) => {
+          // item = item.splice(0, 10)
+          return [this.plantId, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
+        })
       )
   }
 
   getPlantGrowth(): Observable<any> {
-    return this.http.get(this.proxyurl + this.growthUrl + this.page)
+    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/' + this.plantId + '?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA' + this.page)
       .pipe(
         pluck("data"),
         pluck("main_species"),

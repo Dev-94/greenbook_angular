@@ -2,3 +2,8 @@ img {
     max-width: 200px;
     max-height: auto;
 }
+
+
+.card {
+    border: 5px red solid;
+}

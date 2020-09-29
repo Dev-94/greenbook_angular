@@ -10,12 +10,21 @@
 <br />
 <br />
 Search results appear below:
-<div *ngIf="plants">
-  <!-- {{plants | json}} -->
-  <ol *ngFor="let plant of plants.data">
-    <ul>{{ plant.common_name }}</ul>
-    <ul><img src="{{ plant.image_url }}"></ul>
-    <button (click)="fetchPlantGrowth()">click for growth info</button>
-    <div *ngIf="plantGrowth">{{plantGrowth}}</div>
+<div class="card" *ngIf="plants">
+  <ol>
+    <ul>{{ plants[0] }}</ul>
+    <ul>{{ plants[1] }}</ul>
+    <ul><img src="{{ plants[2] }}"></ul>
   </ol>
+  <button (click)="fetchPlantGrowth()">click for growth info</button>
+  <div *ngIf="plantGrowth">
+    <ol>
+      <ul>{{plantGrowth[0]}}</ul>
+      <ul>{{plantGrowth[1]}}</ul>
+      <ul>{{plantGrowth[2]}}</ul>
+      <ul>{{plantGrowth[3]}}</ul>
+      <ul>{{plantGrowth[4]}}</ul>
+    </ol>
+  </div>
+
 </div>

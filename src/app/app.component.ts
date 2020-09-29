@@ -21,7 +21,7 @@ export class AppComponent {
       this.plants = res
     })
   }
-  fetchPlantGrowth() {
+  fetchPlantGrowth(id) {
     this.fetchTrefleService.getPlantGrowth().subscribe(res => {
       console.log('getPlantGrowth()', res)
       this.plantGrowth = res
