@@ -10,20 +10,24 @@
 <br />
 <br />
 Search results appear below:
+<br />
+<hr />
+plants: {{plants | json}}
+plantGrowth: {{plantGrowth | json}}
 <div class="card" *ngIf="plants">
   <ol>
-    <ul>{{ plants[0] }}</ul>
-    <ul>{{ plants[1] }}</ul>
-    <ul><img src="{{ plants[2] }}"></ul>
+    <ul>{{ plants.plantId }}</ul>
+    <ul>{{ plants.common_name }}</ul>
+    <ul><img src="{{ plants.image_url }}"></ul>
   </ol>
   <button (click)="fetchPlantGrowth()">click for growth info</button>
   <div *ngIf="plantGrowth">
     <ol>
-      <ul>{{plantGrowth[0]}}</ul>
-      <ul>{{plantGrowth[1]}}</ul>
-      <ul>{{plantGrowth[2]}}</ul>
-      <ul>{{plantGrowth[3]}}</ul>
-      <ul>{{plantGrowth[4]}}</ul>
+      <ul>{{plantGrowth.plantId}}</ul>
+      <ul>{{plantGrowth.common_name}}</ul>
+      <ul>{{plantGrowth.scientific_name}}</ul>
+      <ul>{{plantGrowth.maximum_precipitation}}</ul>
+      <ul>{{plantGrowth.minimum_precipitation}}</ul>
     </ol>
   </div>
 
