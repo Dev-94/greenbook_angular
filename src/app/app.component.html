@@ -20,6 +20,7 @@ plantGrowth: {{plantGrowth | json}}
     <ul>{{ plants.common_name }}</ul>
     <ul><img src="{{ plants.image_url }}"></ul>
   </ol>
+  <button (click)="nextPlant()">next plant</button>
   <button (click)="fetchPlantGrowth()">click for growth info</button>
   <div *ngIf="plantGrowth">
     <ol>

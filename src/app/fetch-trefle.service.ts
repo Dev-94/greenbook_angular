@@ -8,6 +8,7 @@ import { pluck, tap, concatMap, mergeMap, map, filter, first, elementAt } from '
 // pass id from plantInfo to plantGrowth -- COMPLETE
 // turn response from array to objects
 // show multiple getPlantImageIdName responses
+// create button to switch to next plant
 
 // only shows last element in PlantInfo object - check why that it is
 
@@ -37,6 +38,7 @@ export class FetchTrefleService {
     minimum_precipitation: '',
   }
 
+  i = 0
 
 
 
@@ -69,7 +71,7 @@ export class FetchTrefleService {
         map((item: any) => {
           // item = item.splice(0, 10)
           // return (item[0].id, item[0].common_name, item[0].image_url = { ...this.plantInfo })
-          return (this.plantInfo.plantId = item[0].id, this.plantInfo.common_name = item[0].common_name, this.plantInfo.image_url = item[0].image_url)
+          return (this.plantInfo.plantId = item[this.i].id, this.plantInfo.common_name = item[this.i].common_name, this.plantInfo.image_url = item[this.i].image_url)
           // return [this.plantId, this.common_name, this.image_url] = [item[0].id, item[0].common_name, item[0].image_url]
         })
       )
@@ -87,6 +89,11 @@ export class FetchTrefleService {
           // return [this.id, this.common_name, this.scientific_name, this.maximum_precipitation, this.minimum_precipitation] = [item.id, item.common_name, item.scientific_name, item.growth.maximum_precipitation.mm, item.growth.minimum_precipitation.mm]
         })
       )
+  }
+
+
+  getNextPlant() {
+    this.i++
   }
 
 
