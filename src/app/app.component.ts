@@ -31,7 +31,6 @@ export class AppComponent {
   nextPlant() {
     this.fetchTrefleService.getNextPlant()
     this.fetchPlantInfo()
-
   }
 
 }
