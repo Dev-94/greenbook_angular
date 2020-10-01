@@ -12,7 +12,7 @@
 Search results appear below:
 <br />
 <hr />
-plants: {{plants | json}}
+plants: {{ plants }}
 <br />
 <hr />
 plantGrowth: {{plantGrowth | json}}
@@ -26,8 +26,7 @@ plantGrowth: {{plantGrowth | json}}
   <button (click)="fetchPlantGrowth()">click for growth info</button>
   <div *ngIf="plantGrowth">
     <ol>
-      <ul>{{plantGrowth.plantId}}</ul>
-      <ul>{{plantGrowth.common_name}}</ul>
+      <ul>{{ plants.plantId }}</ul>
       <ul>{{plantGrowth.scientific_name}}</ul>
       <ul>{{plantGrowth.maximum_precipitation}}</ul>
       <ul>{{plantGrowth.minimum_precipitation}}</ul>

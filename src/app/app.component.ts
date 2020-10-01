@@ -15,20 +15,21 @@ export class AppComponent {
 
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
-  fetchPlantInfo() {
+  fetchPlantInfo(): void {
     this.fetchTrefleService.getPlantImageIdName().subscribe(res => {
       console.log('getPlantImageIdName()', res)
       this.plants = res
     })
   }
-  fetchPlantGrowth(id) {
+
+  fetchPlantGrowth(): void {
     this.fetchTrefleService.getPlantGrowth().subscribe(res => {
       console.log('getPlantGrowth()', res)
       this.plantGrowth = res
     })
   }
 
-  nextPlant() {
+  nextPlant(): void {
     this.fetchTrefleService.getNextPlant()
     this.fetchPlantInfo()
   }
