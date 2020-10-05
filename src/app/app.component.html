@@ -10,26 +10,20 @@
 <br />
 <br />
 Search results appear below:
-<br />
-<hr />
-plants: {{ plants }}
-<br />
-<hr />
-plantGrowth: {{plantGrowth | json}}
-<div class="card" *ngIf="plants">
+<div class="card" *ngIf="id">
   <ol>
-    <ul>{{ plants.plantId }}</ul>
-    <ul>{{ plants.common_name }}</ul>
-    <ul><img src="{{ plants.image_url }}"></ul>
+    <ul>ID: {{ id }}</ul>
+    <ul>Name: {{ name }}</ul>
+    <ul>Image: <br /> <img src="{{ image }}"></ul>
   </ol>
   <button (click)="nextPlant()">next plant</button>
   <button (click)="fetchPlantGrowth()">click for growth info</button>
-  <div *ngIf="plantGrowth">
+  <div>
     <ol>
-      <ul>{{ plants.plantId }}</ul>
-      <ul>{{plantGrowth.scientific_name}}</ul>
-      <ul>{{plantGrowth.maximum_precipitation}}</ul>
-      <ul>{{plantGrowth.minimum_precipitation}}</ul>
+      <ul *ngIf="id">ID: {{ id }}</ul>
+      <ul *ngIf="scientific_name">Scientific Name: {{ scientific_name }}</ul>
+      <ul *ngIf="minimum_precipitation">Minimum Precipitation: {{ minimum_precipitation }}</ul>
+      <ul *ngIf="maximum_precipitation">Maximum Precipitation: {{ maximum_precipitation }}</ul>
     </ol>
   </div>
 
