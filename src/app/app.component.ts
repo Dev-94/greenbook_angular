@@ -3,8 +3,10 @@ import { Component } from '@angular/core'
 import { FetchTrefleService } from './fetch-trefle.service'
 
 
+// how to show list of plants from IdName() --- COMPLETED
+// Create search functionality
+// create page button and 
 // how to pass id to Growth()
-// how to show list of plants from IdName()
 
 @Component({
   selector: 'app-root',
@@ -13,22 +15,55 @@ import { FetchTrefleService } from './fetch-trefle.service'
 })
 export class AppComponent {
 
-  id: number
-  name: string
-  image: string
+  // state data, splice to get through number indices, use item to filter out all except name, id, image, return objects in an array
+  /*
+  data:
+   0:
+
+    common_name: "Red fescue"
+    id: 137025
+    image_url: "https://bs.floristic.org/image/o/d073c0ecfeb2f69248e9102eb6ec10f8ccc628cb"
+
+   1:
+
+    common_name: "Creeping buttercup"
+    id: 173910
+    image_url: "https://bs.floristic.org/image/o/c6d9a5222b6ef0e3a7bdef3350278718d3097bce"
+
+  */
+
+
+  objIdNameImage: any
+  id: Array<any>
+  name: Array<any>
+  image: Array<any>
   scientific_name: string
   maximum_precipitation: string
   minimum_precipitation: string
 
+  plantInfo: any
+
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
+
+  // I need an array of objects
+  // obj should have keys of id, name, image
+  // the array should then be listed in template
   fetchPlantInfo(): void {
     this.fetchTrefleService.getPlantImageIdName().subscribe(res => {
       console.log('getPlantImageIdName()', res)
-      this.id = res.data[5].id
-      this.name = res.data[5].common_name
-      this.image = res.data[5].image_url
-      console.log('id, name, image', [this.id, this.name, this.image])
+      // var results = res.data.splice(0, 5)
+      // this.objIdNameImage = results
+      // console.log('results', results)
+      // id is not an array, it inside an object that is within an array
+      // results.map(item => {
+      //   this.id.push(item.id)
+      //   this.name.push(item.common_name)
+      //   this.image.push(item.image_url)
+
+      // })
+      // console.log('id, name, image', [this.id, this.name, this.image])
+      this.plantInfo = res
 
     })
   }

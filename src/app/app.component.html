@@ -10,14 +10,14 @@
 <br />
 <br />
 Search results appear below:
-<div class="card" *ngIf="id">
-  <ol>
-    <ul>ID: {{ id }}</ul>
-    <ul>Name: {{ name }}</ul>
-    <ul>Image: <br /> <img src="{{ image }}"></ul>
+<div class="card" *ngIf="plantInfo">
+  <ol *ngFor="let item of plantInfo.data">
+    <ul>ID: {{ item.id }}</ul>
+    <ul>Name: {{ item.common_name}}</ul>
+    <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
   </ol>
-  <button (click)="nextPlant()">next plant</button>
-  <button (click)="fetchPlantGrowth()">click for growth info</button>
+  <!-- <button (click)="nextPlant()">next plant</button> -->
+  <!-- <button (click)="fetchPlantGrowth()">click for growth info</button>
   <div>
     <ol>
       <ul *ngIf="id">ID: {{ id }}</ul>
@@ -25,6 +25,6 @@ Search results appear below:
       <ul *ngIf="minimum_precipitation">Minimum Precipitation: {{ minimum_precipitation }}</ul>
       <ul *ngIf="maximum_precipitation">Maximum Precipitation: {{ maximum_precipitation }}</ul>
     </ol>
-  </div>
+  </div> -->
 
 </div>
