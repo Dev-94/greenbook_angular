@@ -4,7 +4,9 @@ import { FetchTrefleService } from './fetch-trefle.service'
 
 
 // how to show list of plants from IdName() --- COMPLETED
-// Create search functionality
+// Create search functionality --- COMPLETED
+// Create clear field for search 
+// Search API for search
 // create page button
 // how to pass id to Growth()
 
@@ -51,8 +53,14 @@ export class AppComponent {
 
 
   handleQuery(input) {
-    this.query += input
-    console.log(this.query)
+    this.query = input
+    console.log('handleQuery()', this.query)
+  }
+
+  onSubmit(input) {
+    this.handleQuery(input)
+    console.log('onSubmit()', this.query)
+    this.query = ''
 
   }
 

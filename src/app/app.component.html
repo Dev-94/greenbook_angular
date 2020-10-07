@@ -1,9 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <app-user-profile></app-user-profile>
 
-<input (keydown)="handleQuery($event.key)" />
+<input #search (keyup)="handleQuery(search.value)" (blur)="handleQuery(search.value)" />
 
-<button>Submit</button>
+<button (submit)="onSubmit(search.value)">Submit</button>
 <br />
 <br />
 
