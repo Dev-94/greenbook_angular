@@ -5,7 +5,7 @@ import { FetchTrefleService } from './fetch-trefle.service'
 
 // how to show list of plants from IdName() --- COMPLETED
 // Create search functionality
-// create page button and 
+// create page button
 // how to pass id to Growth()
 
 @Component({
@@ -43,8 +43,18 @@ export class AppComponent {
 
   plantInfo: any
 
+
+  query: string = ''
+
+
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
+
+  handleQuery(input) {
+    this.query += input
+    console.log(this.query)
+
+  }
 
   // I need an array of objects
   // obj should have keys of id, name, image
