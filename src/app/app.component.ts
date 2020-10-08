@@ -5,7 +5,7 @@ import { FetchTrefleService } from './fetch-trefle.service'
 
 // how to show list of plants from IdName() --- COMPLETED
 // Create search functionality --- COMPLETED
-// Create clear field for search 
+// Create clear field for search --- COMPLETED
 // Search API for search
 // create page button
 // how to pass id to Growth()
@@ -55,14 +55,15 @@ export class AppComponent {
   handleQuery(input) {
     this.query = input
     console.log('handleQuery()', this.query)
+    // send this.query as argument to service function
+    // service function is the url with the search term, presumably
+    // depends on docs
+    // look at docs on how to search
+    // http://{defaultHost}/api/v1/plants/search + this.q + this.token
+    // this.q is the query being passed down to the service
+    // may have issues with bubbling data back up to ui (data binding)
   }
 
-  onSubmit(input) {
-    this.handleQuery(input)
-    console.log('onSubmit()', this.query)
-    this.query = ''
-
-  }
 
   // I need an array of objects
   // obj should have keys of id, name, image
