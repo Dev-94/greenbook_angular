@@ -45,8 +45,9 @@ export class AppComponent {
 
   plantInfo: any
 
-
   query: string = ''
+
+  queryPlants: any
 
 
   constructor(private fetchTrefleService: FetchTrefleService) { }
@@ -62,6 +63,7 @@ export class AppComponent {
     // http://{defaultHost}/api/v1/plants/search + this.q + this.token
     // this.q is the query being passed down to the service
     // may have issues with bubbling data back up to ui (data binding)
+    this.fetchTrefleService.getPlantsForQuery().subscribe(res => this.queryPlants = res)
   }
 
 

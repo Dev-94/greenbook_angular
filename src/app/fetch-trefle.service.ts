@@ -56,6 +56,13 @@ export class FetchTrefleService {
 
   i = 0
 
+  q: string = ''
+
+  getPlantsForQuery() {
+    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/search' + '?q=' + `${this.q}` + '&token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
+  }
+
+
   getPlantImageIdName(): Observable<any> {
     // data.common_name, data.image_url, data.main_species_id
     return this.http.get(this.proxyurl + this.url + this.page)

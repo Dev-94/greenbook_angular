@@ -11,6 +11,10 @@
 <br />
 <br />
 Search results appear below:
+{{this.queryPlants | json}}
+<br />
+<br />
+All plants are listed below:
 <div class="card" *ngIf="plantInfo">
   <ol *ngFor="let item of plantInfo.data">
     <ul>ID: {{ item.id }}</ul>
