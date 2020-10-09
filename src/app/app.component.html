@@ -7,11 +7,18 @@
 <br />
 <br />
 
-<button (click)=" fetchPlantInfo()">View All Plants</button>
-<br />
-<br />
 Search results appear below:
-{{this.queryPlants | json}}
+<div class="card" *ngIf="queryPlants">
+  <ol *ngFor="let item of queryPlants.data">
+    <ul>ID: {{ item.id }}</ul>
+    <ul>Name: {{ item.common_name}}</ul>
+    <ul>Scientific Name: {{ item.scientific_name}}</ul>
+    <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
+  </ol>
+</div>
+<br />
+<br />
+<button (click)=" fetchPlantInfo()">View All Plants</button>
 <br />
 <br />
 All plants are listed below:

@@ -56,10 +56,8 @@ export class FetchTrefleService {
 
   i = 0
 
-  q: string = ''
-
-  getPlantsForQuery() {
-    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/search' + '?q=' + `${this.q}` + '&token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
+  getPlantsForQuery(item) {
+    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/search?q=' + item + '&token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
   }
 
 
