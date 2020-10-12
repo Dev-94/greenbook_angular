@@ -46,10 +46,18 @@ export class AppComponent {
     this.fetchTrefleService.getPlantsForQuery(this.query).subscribe(res => console.log(this.queryPlants = res))
   }
 
-  nextPage() {
-
+  prevPage() {
+    if (this.page > 1) {
+      this.page--
+      this.fetchPlantInfo()
+    }
   }
 
+  nextPage() {
+    this.page++
+    this.fetchPlantInfo()
+
+  }
 
   fetchPlantInfo(): void {
     this.fetchTrefleService.getPlantImageIdName(this.page).subscribe(res => {

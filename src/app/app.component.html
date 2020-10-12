@@ -1,11 +1,13 @@
 <app-nav-bar></app-nav-bar>
 <app-user-profile></app-user-profile>
+{{page}}
 
 <input #search (keyup)="handleQuery(search.value)" />
 
 <button (click)="handleQuery(search.value)" (click)="search.value = ''">Submit</button>
 <br />
 <br />
+<button (click)="prevPage()">previous page</button>
 <button (click)="nextPage()">next page</button>
 Search results appear below:
 <div class="card" *ngIf="queryPlants">
