@@ -6,7 +6,7 @@
 <button (click)="handleQuery(search.value)" (click)="search.value = ''">Submit</button>
 <br />
 <br />
-
+<button (click)="nextPage()">next page</button>
 Search results appear below:
 <div class="card" *ngIf="queryPlants">
   <ol *ngFor="let item of queryPlants.data">
@@ -28,8 +28,8 @@ All plants are listed below:
     <ul>Name: {{ item.common_name}}</ul>
     <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
   </ol>
-  <!-- <button (click)="nextPlant()">next plant</button> -->
-  <!-- <button (click)="fetchPlantGrowth()">click for growth info</button>
+ <!-- <button (click)="nextPlant()">next plant</button>
+ <button (click)="fetchPlantGrowth()">click for growth info</button>
   <div>
     <ol>
       <ul *ngIf="id">ID: {{ id }}</ul>
@@ -37,6 +37,6 @@ All plants are listed below:
       <ul *ngIf="minimum_precipitation">Minimum Precipitation: {{ minimum_precipitation }}</ul>
       <ul *ngIf="maximum_precipitation">Maximum Precipitation: {{ maximum_precipitation }}</ul>
     </ol>
-  </div> -->
+  </div>  -->
 
 </div>
