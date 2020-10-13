@@ -8,9 +8,11 @@ import { FetchTrefleService } from './fetch-trefle.service'
 // Create clear field for search --- COMPLETED
 // Search API for search --- COMPLETED
 // create page button --- COMPLETED
-// how to pass id to Growth()
-// get growth info for queryPlants
-// get growth info for all plants
+// how to pass id to Growth() --- COMPLETED
+// get growth info for queryPlants --- COMPLETED
+// get growth info for all plants --- COMPLETED
+// have growth info updated for each specific plant on an individuall basis
+// create user accounts to save info
 
 @Component({
   selector: 'app-root',
