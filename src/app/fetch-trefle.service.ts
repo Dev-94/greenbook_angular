@@ -14,43 +14,18 @@ export class FetchTrefleService {
 
   proxyurl: any = 'https://cors-anywhere.herokuapp.com/'
 
-  // page: any = '&page=1'
-
-  plantInfo = {
-    plantId: 1164724,
-    common_name: '',
-    image: ''
-  }
-
-  plantGrowth = {
-    scientific_name: '',
-    maximum_precipitation: '',
-    minimum_precipitation: ''
-  }
-
-  i = 0
 
   getPlantsForQuery(item) {
     return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/search?q=' + item + '&token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
   }
 
-
-
-
   getPlantImageIdName(page): Observable<any> {
     return this.http.get(this.proxyurl + this.url + '&page=' + page)
-
   }
 
-  getPlantGrowth(page): Observable<any> {
-    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/' + 137025 + '?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA' + page)
+  getPlantGrowth(id): Observable<any> {
+    console.log('service here', id)
+    return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/' + id + '?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
   }
-
-  getNextPlant(): void {
-    this.i++
-  }
-
-
-
 
 }

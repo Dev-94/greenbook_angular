@@ -7,10 +7,10 @@ import { FetchTrefleService } from './fetch-trefle.service'
 // Create search functionality --- COMPLETED
 // Create clear field for search --- COMPLETED
 // Search API for search --- COMPLETED
-// create page button
+// create page button --- COMPLETED
+// how to pass id to Growth()
 // get growth info for queryPlants
 // get growth info for all plants
-// how to pass id to Growth()
 
 @Component({
   selector: 'app-root',
@@ -20,15 +20,11 @@ import { FetchTrefleService } from './fetch-trefle.service'
 export class AppComponent {
 
 
-  objIdNameImage: any
-  id: Array<any>
-  name: Array<any>
-  image: Array<any>
-  scientific_name: string
-  maximum_precipitation: string
-  minimum_precipitation: string
+  id: any = 0
 
   plantInfo: any
+
+  plantGrowth: any
 
   query: string = ''
 
@@ -36,6 +32,7 @@ export class AppComponent {
 
   page = 1
 
+  clicked = false
 
 
   constructor(private fetchTrefleService: FetchTrefleService) { }
@@ -56,7 +53,6 @@ export class AppComponent {
   nextPage() {
     this.page++
     this.fetchPlantInfo()
-
   }
 
   fetchPlantInfo(): void {
@@ -66,19 +62,15 @@ export class AppComponent {
     })
   }
 
-  fetchPlantGrowth(): void {
-    this.fetchTrefleService.getPlantGrowth(this.page).subscribe(res => {
-      this.scientific_name = res.data.main_species.scientific_name,
-        this.maximum_precipitation = res.data.main_species.growth.maximum_precipitation.mm,
-        this.minimum_precipitation = res.data.main_species.growth.minimum_precipitation.mm,
+  fetchPlantGrowth(item): void {
+    // find correct path to id for selected and send it back to service
+    this.id = item
+    this.clicked = true
+    this.fetchTrefleService.getPlantGrowth(this.id).subscribe(res => {
 
-        console.log('scientific_name, maximum_precipitation, minimum_precipitation', [this.scientific_name, this.maximum_precipitation, this.minimum_precipitation])
+      this.plantGrowth = res
+      // console.log('plantGrowth', this.plantGrowth)
     })
-  }
-
-  nextPlant(): void {
-    this.fetchTrefleService.getNextPlant()
-    this.fetchPlantInfo()
   }
 
 }

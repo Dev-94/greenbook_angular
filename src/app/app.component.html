@@ -29,16 +29,20 @@ All plants are listed below:
     <ul>ID: {{ item.id }}</ul>
     <ul>Name: {{ item.common_name}}</ul>
     <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
-  </ol>
- <!-- <button (click)="nextPlant()">next plant</button>
- <button (click)="fetchPlantGrowth()">click for growth info</button>
-  <div>
-    <ol>
-      <ul *ngIf="id">ID: {{ id }}</ul>
-      <ul *ngIf="scientific_name">Scientific Name: {{ scientific_name }}</ul>
-      <ul *ngIf="minimum_precipitation">Minimum Precipitation: {{ minimum_precipitation }}</ul>
-      <ul *ngIf="maximum_precipitation">Maximum Precipitation: {{ maximum_precipitation }}</ul>
-    </ol>
-  </div>  -->
 
+    <hr/>
+
+    
+    <button (click)="fetchPlantGrowth(item.id)">click for growth info</button>
+    <div *ngIf="clicked">
+      <ol *ngIf="plantGrowth">
+        <!-- {{plantGrowth | json}} -->
+        <ul>ID: {{ plantGrowth.data.main_species.id }}</ul>
+        <ul >Scientific Name: {{ plantGrowth.data.main_species.scientific_name }}</ul> 
+        <ul >Minimum Precipitation: {{ plantGrowth.data.main_species.growth.minimum_precipitation.mm }}</ul>
+        <ul >Maximum Precipitation: {{ plantGrowth.data.main_species.growth.maximum_precipitation.mm}}</ul> 
+      </ol>
+    </div> 
+  </ol>
+  <hr/>
 </div>
