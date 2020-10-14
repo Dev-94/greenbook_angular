@@ -13,6 +13,7 @@ import { FetchTrefleService } from './fetch-trefle.service'
 // get growth info for all plants --- COMPLETED
 // have growth info updated for each specific plant on an individuall basis
 // create user accounts to save info
+// style component
 
 @Component({
   selector: 'app-root',
