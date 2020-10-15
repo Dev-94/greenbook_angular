@@ -11,9 +11,10 @@ import { FetchTrefleService } from './fetch-trefle.service'
 // how to pass id to Growth() --- COMPLETED
 // get growth info for queryPlants --- COMPLETED
 // get growth info for all plants --- COMPLETED
-// have growth info updated for each specific plant on an individuall basis
+// style component --- COMPLTETED
+// create card component to render results
+// have growth info updated for each specific plant on an individually basis
 // create user accounts to save info
-// style component
 
 @Component({
   selector: 'app-root',
