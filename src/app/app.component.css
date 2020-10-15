@@ -5,7 +5,8 @@ img {
 
 
 .card {
-    border: 5px red solid;
+    box-shadow: 10px 10px 10px 10px grey;
+    margin-bottom: 10px;
 }
 
 .background {

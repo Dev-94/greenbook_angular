@@ -7,18 +7,13 @@
   <mat-form-field >
     <input matInput placeholder="search a plant" #search (keyup)="handleQuery(search.value)" />
   </mat-form-field>
-  <button mat-mini-fab color="primary" (click)="handleQuery(search.value)" (click)="search.value = ''">search</button>
+  <button mat-raised-button color="accent" (click)="handleQuery(search.value)" (click)="search.value = ''">search</button>
 </div>
 <br />
 <br />
-<div class="background">
-  <button mat-raised-button color="accent" (click)="prevPage()">previous page</button>
-  page:{{page}}
-  <button mat-raised-button color="accent" (click)="nextPage()">next page</button>
-</div>
 Search results appear below:
-<div class="card" *ngIf="queryPlants">
-  <ol *ngFor="let item of queryPlants.data">
+<div *ngIf="queryPlants">
+  <ol class="card" *ngFor="let item of queryPlants.data">
     <ul>ID: {{ item.id }}</ul>
     <ul>Name: {{ item.common_name}}</ul>
     <ul>Scientific Name: {{ item.scientific_name}}</ul>
@@ -28,21 +23,17 @@ Search results appear below:
 <br />
 <br />
 <div class="background">
-  <button mat-raised-button color="primary" (click)="fetchPlantInfo()">View All Plants</button>
+  <button mat-raised-button color="accent" (click)="fetchPlantInfo()">view all plants</button>
 </div>
 <br />
 <br />
 All plants are listed below:
-<div class="card" *ngIf="plantInfo">
-  <ol *ngFor="let item of plantInfo.data">
+<div *ngIf="plantInfo">
+  <ol class="card" *ngFor="let item of plantInfo.data">
     <ul>ID: {{ item.id }}</ul>
     <ul>Name: {{ item.common_name}}</ul>
     <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
-
-    <hr/>
-
-
-    <button (click)="fetchPlantGrowth(item.id)">click for growth info</button>
+    <button mat-flat-button color="accent" (click)="fetchPlantGrowth(item.id)">click for growth info</button>
     <div *ngIf="clicked">
       <ol *ngIf="plantGrowth">
         <!-- {{plantGrowth | json}} -->
@@ -53,5 +44,9 @@ All plants are listed below:
       </ol>
     </div> 
   </ol>
-  <hr/>
+  <div class="background" >
+    <button mat-raised-button color="accent" (click)="prevPage()">previous page</button>
+    page:{{page}}
+    <button mat-raised-button color="accent" (click)="nextPage()">next page</button>
+  </div>
 </div>
