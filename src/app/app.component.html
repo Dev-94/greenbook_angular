@@ -3,16 +3,19 @@
 
 <app-nav-bar></app-nav-bar>
 <app-user-profile></app-user-profile>
-<mat-form-field >
-  <input matInput placeholder="search a plant" #search (keyup)="handleQuery(search.value)" />
-</mat-form-field>
-
-<button mat-mini-fab color="primary" (click)="handleQuery(search.value)" (click)="search.value = ''">search</button>
+<div class="background">
+  <mat-form-field >
+    <input matInput placeholder="search a plant" #search (keyup)="handleQuery(search.value)" />
+  </mat-form-field>
+  <button mat-mini-fab color="primary" (click)="handleQuery(search.value)" (click)="search.value = ''">search</button>
+</div>
 <br />
 <br />
-<button (click)="prevPage()">previous page</button>
-page:{{page}}
-<button (click)="nextPage()">next page</button>
+<div class="background">
+  <button mat-raised-button color="accent" (click)="prevPage()">previous page</button>
+  page:{{page}}
+  <button mat-raised-button color="accent" (click)="nextPage()">next page</button>
+</div>
 Search results appear below:
 <div class="card" *ngIf="queryPlants">
   <ol *ngFor="let item of queryPlants.data">
@@ -24,7 +27,9 @@ Search results appear below:
 </div>
 <br />
 <br />
-<button (click)=" fetchPlantInfo()">View All Plants</button>
+<div class="background">
+  <button mat-raised-button color="primary" (click)="fetchPlantInfo()">View All Plants</button>
+</div>
 <br />
 <br />
 All plants are listed below:
