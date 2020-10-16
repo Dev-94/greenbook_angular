@@ -12,7 +12,9 @@ import { FetchTrefleService } from './fetch-trefle.service'
 // get growth info for queryPlants --- COMPLETED
 // get growth info for all plants --- COMPLETED
 // style component --- COMPLTETED
-// create card component to render results
+// create card component to render results --- COMPLETED
+// individualize plant info for each card, maybe create modal??
+// make search results dissappear when all plants is clicked, may be make allPlants ngOnInit???
 // have growth info updated for each specific plant on an individually basis
 // create user accounts to save info
 
@@ -44,7 +46,7 @@ export class AppComponent {
 
   handleQuery(input) {
     this.query = input
-    this.fetchTrefleService.getPlantsForQuery(this.query).subscribe(res => console.log(this.queryPlants = res))
+    this.fetchTrefleService.getPlantsForQuery(this.query).subscribe(res => this.queryPlants = res)
   }
 
   prevPage() {

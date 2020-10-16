@@ -10,6 +10,7 @@
 <br />
 <!-- pass props to card, how do??? -->
 Search results appear below:
+<app-plant-card [queryPlants]="queryPlants" [plantGrowth]="plantGrowth"></app-plant-card>
 <!-- <div *ngIf="queryPlants">
   <ol class="card" *ngFor="let item of queryPlants.data">
     <ul>ID: {{ item.id }}</ul>
