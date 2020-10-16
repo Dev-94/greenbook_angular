@@ -14,7 +14,8 @@ import { PlantGrowthServiceComponent } from './plant-growth-service/plant-growth
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { MatInputModule } from '@angular/material/input'
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { PlantCardComponent } from './plant-card/plant-card.component'
 
 @NgModule({
 
@@ -23,7 +24,8 @@ import { MatButtonModule } from '@angular/material/button'
     AuthButtonComponent,
     UserProfileComponent,
     NavBarComponent,
-    PlantGrowthServiceComponent
+    PlantGrowthServiceComponent,
+    PlantCardComponent
   ],
   imports: [
     BrowserModule,

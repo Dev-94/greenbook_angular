@@ -8,15 +8,16 @@
 </div>
 <br />
 <br />
+<!-- pass props to card, how do??? -->
 Search results appear below:
-<div *ngIf="queryPlants">
+<!-- <div *ngIf="queryPlants">
   <ol class="card" *ngFor="let item of queryPlants.data">
     <ul>ID: {{ item.id }}</ul>
     <ul>Name: {{ item.common_name}}</ul>
     <ul>Scientific Name: {{ item.scientific_name}}</ul>
     <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
   </ol>
-</div>
+</div> -->
 <br />
 <br />
 <div class="background">
@@ -25,25 +26,11 @@ Search results appear below:
 <br />
 <br />
 All plants are listed below:
-<div *ngIf="plantInfo">
-  <ol class="card" *ngFor="let item of plantInfo.data">
-    <ul>ID: {{ item.id }}</ul>
-    <ul>Name: {{ item.common_name}}</ul>
-    <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
-    <button mat-flat-button color="accent" (click)="fetchPlantGrowth(item.id)">click for growth info</button>
-    <div *ngIf="clicked">
-      <ol *ngIf="plantGrowth">
-        <!-- {{plantGrowth | json}} -->
-        <ul>ID: {{ plantGrowth.data.main_species.id }}</ul>
-        <ul >Scientific Name: {{ plantGrowth.data.main_species.scientific_name }}</ul> 
-        <ul >Minimum Precipitation: {{ plantGrowth.data.main_species.growth.minimum_precipitation.mm }}</ul>
-        <ul >Maximum Precipitation: {{ plantGrowth.data.main_species.growth.maximum_precipitation.mm}}</ul> 
-      </ol>
-    </div> 
-  </ol>
+<app-plant-card [plantInfo]="plantInfo" [plantGrowth]="plantGrowth"></app-plant-card>
+
   <div class="background" >
     <button mat-raised-button color="accent" (click)="prevPage()">previous page</button>
     page:{{page}}
     <button mat-raised-button color="accent" (click)="nextPage()">next page</button>
   </div>
-</div>
+<!-- </div> -->

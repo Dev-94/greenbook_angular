@@ -66,15 +66,5 @@ export class AppComponent {
     })
   }
 
-  fetchPlantGrowth(item): void {
-    // find correct path to id for selected and send it back to service
-    this.id = item
-    this.clicked = true
-    this.fetchTrefleService.getPlantGrowth(this.id).subscribe(res => {
-
-      this.plantGrowth = res
-      // console.log('plantGrowth', this.plantGrowth)
-    })
-  }
 
 }
