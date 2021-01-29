@@ -1,3 +1,21 @@
+<div *ngIf="queryPlants">
+    <ol class="card" *ngFor="let item of queryPlants.data">
+      <ul>ID: {{ item.id }}</ul>
+      <ul>Name: {{ item.common_name}}</ul>
+      <ul>Scientific Name: {{ item.scientific_name}}</ul>
+      <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
+      <button mat-flat-button color="accent" *ngIf="!clicked" (click)="fetchPlantGrowth(item.id)">click for growth info</button>
+      <div *ngIf="clicked">
+        <ol *ngIf="plantGrowth">
+          <ul>ID: {{ plantGrowth.data.main_species.id }}</ul>
+          <ul >Scientific Name: {{ plantGrowth.data.main_species.scientific_name }}</ul> 
+          <ul >Minimum Precipitation: {{ plantGrowth.data.main_species.growth.minimum_precipitation.mm }}</ul>
+          <ul >Maximum Precipitation: {{ plantGrowth.data.main_species.growth.maximum_precipitation.mm}}</ul> 
+        </ol>
+      </div> 
+    </ol>
+  </div>
+
 <div *ngIf="plantInfo">
     <ol class="card" *ngFor="let item of plantInfo.data">
       <ul>ID: {{ item.id }}</ul>

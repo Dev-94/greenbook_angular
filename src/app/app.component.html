@@ -8,13 +8,25 @@
 </div>
 <br />
 <br />
+<!-- pass props to card, how do??? -->
+Search results appear below:
+<app-plant-card [queryPlants]="queryPlants" [plantGrowth]="plantGrowth"></app-plant-card>
+<!-- <div *ngIf="queryPlants">
+  <ol class="card" *ngFor="let item of queryPlants.data">
+    <ul>ID: {{ item.id }}</ul>
+    <ul>Name: {{ item.common_name}}</ul>
+    <ul>Scientific Name: {{ item.scientific_name}}</ul>
+    <ul>Image: <br /> <img src="{{ item.image_url }}"></ul>
+  </ol>
+</div> -->
+<br />
+<br />
 <div class="background">
   <button mat-raised-button color="accent" (click)="fetchPlantInfo()">view all plants</button>
 </div>
 <br />
-Results appear below:
 <br />
-<br />
+All plants are listed below:
 <app-plant-card [plantInfo]="plantInfo" [plantGrowth]="plantGrowth"></app-plant-card>
 
   <div class="background" >
@@ -22,3 +34,4 @@ Results appear below:
     page:{{page}}
     <button mat-raised-button color="accent" (click)="nextPage()">next page</button>
   </div>
+<!-- </div> -->
