@@ -12,7 +12,6 @@ export class PlantCardComponent {
   constructor(private fetchTrefleService: FetchTrefleService) { }
 
   @Input() queryPlants: any
-
   @Input() plantInfo: any
   @Input() plantGrowth: any
   page = 1

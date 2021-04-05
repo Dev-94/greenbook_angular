@@ -24,7 +24,7 @@ export class FetchTrefleService {
   }
 
   getPlantGrowth(id): Observable<any> {
-    console.log('service here', id)
+    console.log('getPlantGrowth service here:', id)
     return this.http.get(this.proxyurl + 'https://trefle.io/api/v1/plants/' + id + '?token=GTF4gOKNDJTmYmR2ut6r6y1fyD3pN1GrGSEoST_s0mA')
   }
 
